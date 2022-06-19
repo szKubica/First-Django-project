@@ -7,17 +7,17 @@
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
-    <img src="{% static '/images/zdjecie.png' %}">
     <link rel="stylesheet" type= "text/css" href="{% static '/css/main.css' %}">
 </head>
 <body>
     {% if shoes_list|length == 0 %}
-    <h2>Brak filmów</h2>
+    <h1>Brak filmów</h1>
     {% endif %}
-    <h2>All pairs in stock:</h2>
+    <h1>All pairs in stock:</h1>
     {% for shoes in shoes_list %}
-    <p>{{shoes.brand }} {{shoes.model }}</p>
-     <img src="{{shoes.photo}}" >
+    <h2>{{shoes.brand }} {{shoes.model }}</h2>
+        <h4>Size: {{ shoes.size }}, Price:{{ shoes.price }}</h4>
+        <p>{{ shoes.description }}</p>
 
     {% endfor %}
     <h3>Pairs in stock: {{ shoes_list|length }}</h3>

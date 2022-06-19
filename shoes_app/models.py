@@ -29,9 +29,13 @@ class Shoes(models.Model):
     size = models.CharField(max_length= 2, choices= SIZES)
     gender = models.CharField(max_length= 10, choices= GENDER, default='Unisex')
     quantity = models.PositiveSmallIntegerField(default=0)
-    photo = models.ImageField(upload_to='static/images' ,null= True, blank= True)
-    def __str__(self):
-        return self.size
+    photo = models.ImageField(upload_to='shoes_images', null= True, blank= True)
 
+    def __str__(self):
+        return self.brand_with_model()
+
+
+    def brand_with_model(self):
+        return "{} {}".format(self.brand, self.model)
 
 
