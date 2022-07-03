@@ -7,20 +7,38 @@
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
-    <link rel="stylesheet" type= "text/css" href="{% static '/css/main.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'shoes_app/css/bootstrap.css'%}"/>
+    <link rel="stylesheet" type= "text/css" href="{% static 'shoes_app/css/main.css'%}"/>
+
+
+
+
+
 </head>
 <body>
-    {% if shoes_list|length == 0 %}
-    <h1>Brak filmów</h1>
+    {% if user.is_authenticated %}
+    <a href="{% url 'logout' %}">Logout</a>
+    {% else %}
+    <a href="{% url 'login' %}">Login</a>
     {% endif %}
-    <h1>All pairs in stock:</h1>
+    <hr>
+    <a href="{% url 'create_shoes'%}">Add</a>
+    {% if shoes_list|length == 0 %}
+    <h1>No shoes in stock</h1>
+    {% endif %}
+    {% if shoes_list|length != 0 %}
+    <h1>All pairs in stock ({{ shoes_list|length }}):</h1>
     {% for shoes in shoes_list %}
     <h2>{{shoes.brand }} {{shoes.model }}</h2>
         <h4>Size: {{ shoes.size }}, Price:{{ shoes.price }}</h4>
         <p>{{ shoes.description }}</p>
+        <img src="/media/{{shoes.photo }}" class="shoes-photo" >
+        <a href="{% url 'edit_shoes' shoes.id %}">Edit</a>
+         <a href="{% url 'delete_shoes' shoes.id %}">Delete</a>
 
     {% endfor %}
-    <h3>Pairs in stock: {{ shoes_list|length }}</h3>
+    {% endif %}
+
 </body>
 </html>
 

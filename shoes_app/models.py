@@ -28,7 +28,7 @@ class Shoes(models.Model):
     premier_date = models.CharField(blank= True, null= True, max_length=4)
     size = models.CharField(max_length= 2, choices= SIZES)
     gender = models.CharField(max_length= 10, choices= GENDER, default='Unisex')
-    quantity = models.PositiveSmallIntegerField(default=0)
+    quantity = models.PositiveSmallIntegerField(default=1)
     photo = models.ImageField(upload_to='shoes_images', null= True, blank= True)
 
     def __str__(self):
