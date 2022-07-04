@@ -1,15 +1,9 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
+{% extends 'main.html' %}
+{% block title %} Confirm change {% endblock %}
+{% block site %}
     <h1>Are you sure, you want to end this ad: {{shoes}} </h1>
 <form method="post">
     {% csrf_token %}
     <button type="submit">Yes</button>
 </form>
-
-</body>
-</html>
+{% endblock %}

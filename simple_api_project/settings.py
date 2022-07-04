@@ -39,7 +39,9 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'shoes_app',
-    'user_login'
+    'user_login',
+    'bootstrapform',
+    'fontawesome'
 ]
 
 MIDDLEWARE = [

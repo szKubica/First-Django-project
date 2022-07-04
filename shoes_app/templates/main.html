@@ -1,0 +1,21 @@
+{% load static %}
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" type="text/css" href="{% static 'shoes_app/css/bootstrap.css'%}"/>
+    <link rel="stylesheet" type= "text/css" href="{% static 'shoes_app/css/main.css'%}"/>
+    <script src="{% static 'fontawesome_free/js/all.min.js' %}"></script>
+    <link href="{% static 'fontawesome_free/css/all.min.css' %}" rel="stylesheet" type="text/css">
+
+
+
+    <title>{% block title %} {% endblock %}</title>
+</head>
+<body>
+    {% block site %} {% endblock %}
+</body>
+</html>

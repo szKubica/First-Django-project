@@ -1,21 +1,33 @@
+{% load bootstrap %}
 {% load static %}
 <!doctype html>
 <html lang="en">
 <head>
-     <link rel="stylesheet" type="text/css" href="{% static 'shoes_app/css/bootstrap.css'%}"/>
+    <link rel="stylesheet" type="text/css" href="{% static 'shoes_app/css/bootstrap.css'%}"/>
+    <link rel="stylesheet" type= "text/css" href="{% static 'shoes_app/css/main.css'%}"/>
+    <script src="{% static 'fontawesome_free/js/all.min.js' %}"></script>
+    <link href="{% static 'fontawesome_free/css/all.min.css' %}" rel="stylesheet" type="text/css">
     <link rel="stylesheet" type= "text/css" href="{% static 'shoes_app/css/main.css'%}"/>
     <meta charset="UTF-8">
     <meta name="viewport"
-          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
 </head>
 <body>
-    <form method="post">
+<center>
+
+<div class="card" style="width: 18rem;">
+  <div class="card-body">
+     <form method="post">
         {% csrf_token %}
         <input type="hidden" name="next" value="{{ next }}" />
-        {{ form }}
-        <button type="submit">Zaloguj</button>
-    </form>
+        {{ form|bootstrap }}
+    <button type="submit" class="btn btn-primary" >Login <i class="fa-solid fa-arrow-right-to-bracket"></i></button>
+  </div>
+</div>
+</center>
 </body>
 </html>
+
+
