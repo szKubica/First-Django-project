@@ -16,4 +16,4 @@
 
 -User authentication
 
--models realtions: many to many, one to one, many to one
+-models relations: many to many, one to one, many to one
