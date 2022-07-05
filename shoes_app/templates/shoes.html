@@ -2,77 +2,49 @@
 {% block title %} Shoes list {% endblock %}
 
 {% block site %}
-    <div class="jumbotron">
-    {% if user.is_authenticated %}
-  <h1 class="display-4">Welcome, {{ user.get_username }}</h1>
-    {% else %}
-    <h1 class="display-4">Please login</h1>
-    {% endif %}
-  <p class="lead">This is a simple hero unit, a simple jumbotron-style component for calling extra attention to featured content or information.</p>
-  <hr class="my-4">
-  <p class="lead">
-    {% if user.is_authenticated %}
-                <div class="row">
-          <div class="col-sm-6">
-            <div class="card">
-              <div class="card-body">
-                <h5 class="card-title">Special title treatment</h5>
-                <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-                <a href="{% url 'logout' %}" class="btn btn-primary">Logout</a>
-              </div>
-            </div>
-          </div>
-          <div class="col-sm-6">
-            <div class="card">
-              <div class="card-body">
-                <h5 class="card-title">Special title treatment</h5>
-                <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-                <a href="{% url 'create_shoes'%}" class="btn btn-primary">Add <i class="fa-solid fa-plus"></i></a>
-              </div>
-            </div>
-          </div>
-        </div>
-    {% else %}
-        <center>
-        <div class="card text-center">
-            <div class="card-body">
-                <h5 class="card-title">Special title treatment</h5>
-                <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-                 <a href="{% url 'login' %}" class="btn btn-primary">Login  <i class="fa-solid fa-arrow-right-to-bracket"></i> </a>
-            </div>
-        </div>
-        </center>
-    {% endif %}
-  </p>
-</div>
-
-
-    <br>
+    <h1>Welcome, {{ user.get_username }}</h1>
     {% if shoes_list|length == 0 %}
     <h1>No shoes in stock</h1>
     {% endif %}
     {% if shoes_list|length != 0 %}
         {% for shoes in shoes_list %}
-         <div class="card" style="width: 30%">
-          <img src="/media/{{shoes.photo }}" class="card-img-top" style="width: 400px">
-          <div class="card-body">
-            <h5 class="card-title">{{ shoes.brand}} {{ shoes.model}}</h5>
-            <div class="box">
-              <p class="card-text">{{shoes.description}}</p>
+            <div class="container mb-5">
+                <div class="row">
+                    <div class="col-12">
+                        <img src="/media/{{shoes.photo }}" class="card-img-top" style="width: 400px">
+                    </div>
+                    <div class="col-12">
+                        <h5 class="card-title text-center">{{ shoes.brand}} {{ shoes.model}}</h5>
+                    </div>
+                     <div class="col-12">
+                        <p class="text-center">{{shoes.description}}</p>
+                    </div>
+                </div>
+              <ul class="list-group list-group-flush">
+                  <div class="row">
+                    <div class="col-6">
+                        <li class="list-group-item text-center">{{shoes.price}}</li>
+                    </div>
+                    <div class="col-6">
+                        <li class="list-group-item text-center">{{shoes.size}}</li>
+                    </div>
+                  </div>
+              </ul>
             </div>
-
-          </div>
-          <ul class="list-group list-group-flush">
-            <li class="list-group-item">{{shoes.price}}</li>
-            <li class="list-group-item">{{shoes.size}}</li>
-          </ul>
           <div class="card-body">
-            <a href="{% url 'edit_shoes' shoes.id %}" class="card-link"><i class="fa-solid fa-2x fa-pen-to-square"></i></a>
-            <a href="{% url 'delete_shoes' shoes.id %}" class="card-link"><i class="fa-solid fa-2x fa-trash"></i></a>
+            <div class="container">
+                    <div class="row">
+                        <div class="col-1 text-center">
+                            <a href="{% url 'edit_shoes' shoes.id %}" class="card-link"><i class="fa-solid fa-2x fa-pen-to-square"></i></a>
+                            <a href="{% url 'delete_shoes' shoes.id %}" class="card-link"><i class="fa-solid fa-2x fa-trash"></i></a>
+                        </div>
+                    </div>
+            </div>
           </div>
         </div>
     {% endfor %}
     {% endif %}
+
 
 {% endblock %}
 
